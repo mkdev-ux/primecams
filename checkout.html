@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PrimeCams - Checkout</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .checkout-container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .checkout-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .order-summary {
+      margin-top: 30px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+
+    .order-summary h3 {
+      margin-bottom: 15px;
+    }
+
+    .order-summary p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .checkout-button {
+      background-color: #000;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      width: 100%;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .checkout-button:hover {
+      background-color: #444;
+    }
+
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+      border: 1px solid #c3e6cb;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html"><h1>PrimeCams</h1></a>
+    <nav>
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger">&#9776;</label>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="checkout-container">
+    <h2>Checkout</h2>
+
+    <form id="checkout-form">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="Full Name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Shipping Address</label>
+        <input type="text" id="address" name="Address" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="Email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <select id="country" name="Country" required>
+          <option value="">Select your country</option>
+          <option value="USA">USA</option>
+          <option value="Canada">Canada</option>
+          <option value="UK">UK</option>
+          <option value="Germany">Germany</option>
+          <option value="France">France</option>
+          <option value="Australia">Australia</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="payment-method">Payment Method</label>
+        <select id="payment-method" name="Payment Method" required>
+          <option value="">Select a method</option>
+          <option value="Bitcoin">Bitcoin</option>
+          <option value="PayPal">PayPal</option>
+          <option value="Zelle">Zelle</option>
+          <option value="Venmo">Venmo</option>
+          <option value="Gift Card">Gift Cards</option>
+          <option value="Apple Pay">Apple Pay</option>
+        </select>
+      </div>
+
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div id="order-items"></div>
+        <p><strong>Total: $<span id="order-total">0.00</span></strong></p>
+      </div>
+
+      <button type="submit" class="checkout-button">Place Order</button>
+    </form>
+
+    <div id="success-message" class="success-message" style="display: none;">
+      ✅ Order placed successfully! We will contact you soon.
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2025 PrimeCams. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Load cart and display summary
+    function loadOrderSummary() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const orderItems = document.getElementById('order-items');
+      let total = 0;
+      orderItems.innerHTML = '';
+
+      if (cart.length === 0) {
+        orderItems.innerHTML = '<p>Your cart is empty.</p>';
+        document.getElementById('order-total').textContent = '0.00';
+        return;
+      }
+
+      cart.forEach(item => {
+        const quantity = item.quantity || 1;
+        const subtotal = item.price * quantity;
+        total += subtotal;
+
+        const itemElement = document.createElement('p');
+        itemElement.textContent = `${item.name} - $${item.price} x ${quantity}`;
+        orderItems.appendChild(itemElement);
+      });
+
+      document.getElementById('order-total').textContent = total.toFixed(2);
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+
+    // Submit form via fetch (no redirect)
+    document.getElementById('checkout-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+      }
+
+      let orderSummary = '';
+      cart.forEach(item => {
+        const quantity = item.quantity || 1;
+        orderSummary += `${item.name} - $${item.price} x ${quantity}\n`;
+      });
+
+      const formData = new FormData(this);
+      formData.append('Order Summary', orderSummary);
+      formData.append('Total', document.getElementById('order-total').textContent);
+
+      try {
+        await fetch('https://formsubmit.co/ajax/primecamsshop@outlook.com', {
+          method: 'POST',
+          body: formData
+        });
+
+        document.getElementById('success-message').style.display = 'block';
+        localStorage.removeItem('cart');
+        this.reset();
+        document.getElementById('order-items').innerHTML = '';
+        document.getElementById('order-total').textContent = '0.00';
+        document.getElementById('cart-count').textContent = '0';
+      } catch (err) {
+        alert('Something went wrong. Please try again.');
+      }
+    });
+
+    loadOrderSummary();
+  </script>
+</body>
+</html>

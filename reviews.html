@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Reviews | PrimeCams</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .review-page {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .review {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .review h4 {
+      margin: 0 0 5px 0;
+      font-size: 18px;
+    }
+
+    .stars {
+      color: gold;
+      margin-bottom: 5px;
+    }
+
+    .review p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+
+    .review-form {
+      margin-top: 40px;
+    }
+
+    .review-form h3 {
+      margin-bottom: 15px;
+    }
+
+    .review-form input,
+    .review-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .review-form .star-input {
+      font-size: 24px;
+      cursor: pointer;
+      color: #ccc;
+      margin-right: 5px;
+    }
+
+    .review-form .star-input.selected {
+      color: gold;
+    }
+
+    .review-form button {
+      background-color: #000;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .review-form button:hover {
+      background-color: #444;
+    }
+
+    .success-message {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>PrimeCams</h1>
+  <nav>
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="review-page">
+  <h2>Customer Reviews</h2>
+
+  <div id="reviews-container">
+    <div class="review">
+      <h4>Jane Doe</h4>
+      <div class="stars">★★★★★</div>
+      <p>PrimeCams is the best camera store! Fast shipping and excellent customer service.</p>
+    </div>
+
+    <div class="review">
+      <h4>John Smith</h4>
+      <div class="stars">★★★★☆</div>
+      <p>Great selection of products and competitive prices. Highly recommended!</p>
+    </div>
+
+    <div class="review">
+      <h4>Alice Johnson</h4>
+      <div class="stars">★★★★★</div>
+      <p>Excellent quality and very fast delivery. I love my new camera!</p>
+    </div>
+
+    <div class="review">
+      <h4>Michael Brown</h4>
+      <div class="stars">★★★★☆</div>
+      <p>Received my order quickly. Product was well packaged. Will buy again.</p>
+    </div>
+
+    <div class="review">
+      <h4>Sarah Lee</h4>
+      <div class="stars">★★★★★</div>
+      <p>Beautiful website and excellent product descriptions. Very helpful customer service.</p>
+    </div>
+
+    <div class="review">
+      <h4>Daniel Kim</h4>
+      <div class="stars">★★★☆☆</div>
+      <p>Good prices, but delivery took a bit longer than expected. Overall satisfied.</p>
+    </div>
+
+    <div class="review">
+      <h4>Emily Carter</h4>
+      <div class="stars">★★★★★</div>
+      <p>Best camera store I’ve used online. Super fast delivery and top quality!</p>
+    </div>
+
+    <div class="review">
+      <h4>James Wilson</h4>
+      <div class="stars">★★★★☆</div>
+      <p>Solid camera selection and fair prices. Could improve packaging though.</p>
+    </div>
+
+    <div class="review">
+      <h4>Olivia Martin</h4>
+      <div class="stars">★★★★★</div>
+      <p>Everything was perfect. The checkout process was smooth and shipping was fast.</p>
+    </div>
+
+    <div class="review">
+      <h4>William Garcia</h4>
+      <div class="stars">★★★★★</div>
+      <p>Fantastic service! PrimeCams is now my go-to store for photography gear.</p>
+    </div>
+  </div>
+
+  <div class="review-form">
+    <h3>Leave a Review</h3>
+    <input type="text" id="reviewer-name" placeholder="Your Name" required />
+    <textarea id="reviewer-text" rows="4" placeholder="Your Review" required></textarea>
+    <div id="star-rating">
+      <span class="star-input" data-star="1">&#9733;</span>
+      <span class="star-input" data-star="2">&#9733;</span>
+      <span class="star-input" data-star="3">&#9733;</span>
+      <span class="star-input" data-star="4">&#9733;</span>
+      <span class="star-input" data-star="5">&#9733;</span>
+    </div>
+    <button onclick="submitReview()">Submit Review</button>
+    <div class="success-message" id="success-message" style="display: none;">Review sent!</div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>About PrimeCams</h3>
+      <p>Your trusted source for professional cameras, accessories, and expert advice. We deliver high-quality gear worldwide.</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>Email: primecamsshop@outlook.com</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 PrimeCams. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  let selectedRating = 0;
+
+  document.querySelectorAll('.star-input').forEach(star => {
+    star.addEventListener('click', () => {
+      selectedRating = parseInt(star.getAttribute('data-star'));
+      document.querySelectorAll('.star-input').forEach(s => s.classList.remove('selected'));
+      for (let i = 0; i < selectedRating; i++) {
+        document.querySelectorAll('.star-input')[i].classList.add('selected');
+      }
+    });
+  });
+
+  function submitReview() {
+    const name = document.getElementById('reviewer-name').value.trim();
+    const text = document.getElementById('reviewer-text').value.trim();
+
+    if (name && text && selectedRating > 0) {
+      const newReview = document.createElement('div');
+      newReview.classList.add('review');
+      newReview.innerHTML = `
+        <h4>${name}</h4>
+        <div class="stars">${'★'.repeat(selectedRating)}${'☆'.repeat(5 - selectedRating)}</div>
+        <p>${text}</p>
+      `;
+      document.getElementById('reviews-container').prepend(newReview);
+
+      document.getElementById('reviewer-name').value = '';
+      document.getElementById('reviewer-text').value = '';
+      document.querySelectorAll('.star-input').forEach(s => s.classList.remove('selected'));
+      selectedRating = 0;
+
+      document.getElementById('success-message').style.display = 'block';
+      setTimeout(() => { document.getElementById('success-message').style.display = 'none'; }, 3000);
+    } else {
+      alert('Please complete all fields and select a star rating.');
+    }
+  }
+</script>
+
+</body>
+</html>

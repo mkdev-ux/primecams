@@ -1,0 +1,343 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PrimeCams - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <a href="index.html"><h1>PrimeCams</h1></a>
+
+  <nav>
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="banner">
+  <h2>Top Cameras for Professionals & Creators</h2>
+</section>
+<section class="announcement-banner">
+  <div class="announcement-text">
+    🚚✨ Free shipping within the USA!
+  </div>
+</section>
+
+<!-- 🔍 Search Bar -->
+<section class="search-section">
+  <input type="text" id="search-input" placeholder="Search..." onkeyup="searchProducts()" />
+  <ul id="suggestions" class="suggestions"></ul>
+</section>
+<!-- 📌 NEW TEXT GRID SECTION -->
+<section class="text-grids">
+  <div class="grid-item">
+    <h3>📷 Pro-Level Gear</h3>
+    <p>Shop from top brands like Canon, Sony, Nikon & more. Our selection meets the needs of professionals and creators alike.</p>
+  </div>
+  <div class="grid-item">
+    <h3>🚚 Fast Shipping</h3>
+    <p>Enjoy fast and reliable shipping — with free delivery included!</p>
+  </div>
+  <div class="grid-item">
+    <h3>💬 Expert Support</h3>
+    <p>Our team is ready to guide you toward the perfect camera. Ask us anything, anytime.</p>
+  </div>
+</section>
+
+<section class="products" id="product-list">
+
+  <div class="product">
+    <a href="Canon EOS R5.html">
+      <img src="images/Canon EOS R5.webp" alt="Canon EOS R5" />
+    </a>
+    <h3>Canon EOS R5</h3>
+    <p>$3,899</p>
+    <button onclick="addToCart('Canon EOS R5', 3899, 'images/Canon EOS R5.webp')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="sony-alpha-a7-iv.html">
+      <img src="images/Sony Alpha a7 IV.jpg" alt="Sony Alpha a7 IV" />
+    </a>
+    <h3>Sony Alpha a7 IV</h3>
+    <p>$2,498</p>
+    <button onclick="addToCart('Sony Alpha a7 IV', 2498, 'images/Sony Alpha a7 IV.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="nikon-z6-ii.html">
+      <img src="images/Nikon Z6 II.jpg" alt="Nikon Z6 II" />
+    </a>
+    <h3>Nikon Z6 II</h3>
+    <p>$1,996</p>
+    <button onclick="addToCart('Nikon Z6 II', 1996, 'images/Nikon Z6 II.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="fujifilm-xt5.html">
+      <img src="images/Fujifilm X-T5.jpg" alt="Fujifilm X-T5" />
+    </a>
+    <h3>Fujifilm X-T5</h3>
+    <p>$1,699</p>
+    <button onclick="addToCart('Fujifilm X-T5', 1699, 'images/Fujifilm X-T5.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="sony-zv-e10.html">
+      <img src="images/Sony ZV-E10.webp" alt="Sony ZV-E10" />
+    </a>
+    <h3>Sony ZV-E10</h3>
+    <p>$798</p>
+    <button onclick="addToCart('Sony ZV-E10', 798, 'images/Sony ZV-E10.webp')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="canon-rebel-t8i.html">
+      <img src="images/Canon EOS Rebel T8i.jpeg" alt="Canon EOS Rebel T8i" />
+    </a>
+    <h3>Canon EOS Rebel T8i</h3>
+    <p>$899</p>
+    <button onclick="addToCart('Canon EOS Rebel T8i', 899, 'images/Canon EOS Rebel T8i.jpeg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="nikon-d850.html">
+      <img src="images/Nikon D850.png" alt="Nikon D850" />
+    </a>
+    <h3>Nikon D850</h3>
+    <p>$2,996</p>
+    <button onclick="addToCart('Nikon D850', 2996, 'images/Nikon D850.png')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="panasonic-gh6.html">
+      <img src="images/Panasonic Lumix GH6.webp" alt="Panasonic Lumix GH6" />
+    </a>
+    <h3>Panasonic Lumix GH6</h3>
+    <p>$2,197</p>
+    <button onclick="addToCart('Panasonic Lumix GH6', 2197, 'images/Panasonic Lumix GH6.webp')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="sony-alpha-7c.html">
+      <img src="images/Sony Alpha 7C.webp" alt="Sony Alpha 7C" />
+    </a>
+    <h3>Sony Alpha 7C</h3>
+    <p>$1,798</p>
+    <button onclick="addToCart('Sony Alpha 7C', 1798, 'images/Sony Alpha 7C.webp')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="canon-m50-mark-ii.html">
+      <img src="images/Canon EOS M50 Mark II.webp" alt="Canon EOS M50 Mark II" />
+    </a>
+    <h3>Canon EOS M50 Mark II</h3>
+    <p>$699</p>
+    <button onclick="addToCart('Canon EOS M50 Mark II', 699, 'images/Canon EOS M50 Mark II.webp')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="canon-eos-r7.html">
+      <img src="images/Canon EOS R7.jpg" alt="Canon EOS R7" />
+    </a>
+    <h3>Canon EOS R7</h3>
+    <p>$1,499</p>
+    <button onclick="addToCart('Canon EOS R7', 1499, 'images/Canon EOS R7.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="nikon-z9.html">
+      <img src="images/Nikon Z9.jpg" alt="Nikon Z9" />
+    </a>
+    <h3>Nikon Z9</h3>
+    <p>$5,496</p>
+    <button onclick="addToCart('Nikon Z9', 5496, 'images/Nikon Z9.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="sony-alpha-a1.html">
+      <img src="images/Sony Alpha a1.jpg" alt="Sony Alpha a1" />
+    </a>
+    <h3>Sony Alpha a1</h3>
+    <p>$6,498</p>
+    <button onclick="addToCart('Sony Alpha a1', 6498, 'images/Sony Alpha a1.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="fujifilm-x100v.html">
+      <img src="images/Fujifilm X100V.jpg" alt="Fujifilm X100V" />
+    </a>
+    <h3>Fujifilm X100V</h3>
+    <p>$1,399</p>
+    <button onclick="addToCart('Fujifilm X100V', 1399, 'images/Fujifilm X100V.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="panasonic-s5.html">
+      <img src="images/Panasonic Lumix S5.webp" alt="Panasonic Lumix S5" />
+    </a>
+    <h3>Panasonic Lumix S5</h3>
+    <p>$1,997</p>
+    <button onclick="addToCart('Panasonic Lumix S5', 1997, 'images/Panasonic Lumix S5.webp')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="olympus-om-d-e-m1.html">
+      <img src="images/Olympus OM-D E-M1 Mark III.jpg" alt="Olympus OM-D E-M1 Mark III" />
+    </a>
+    <h3>Olympus OM-D E-M1 Mark III</h3>
+    <p>$1,499</p>
+    <button onclick="addToCart('Olympus OM-D E-M1 Mark III', 1499, 'images/Olympus OM-D E-M1 Mark III.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="leica-q2.html">
+      <img src="images/Leica Q2.jpg" alt="Leica Q2" />
+    </a>
+    <h3>Leica Q2</h3>
+    <p>$5,795</p>
+    <button onclick="addToCart('Leica Q2', 5795, 'images/Leica Q2.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="canon-eos-90d.html">
+      <img src="images/Canon EOS 90D.jpg" alt="Canon EOS 90D" />
+    </a>
+    <h3>Canon EOS 90D</h3>
+    <p>$1,199</p>
+    <button onclick="addToCart('Canon EOS 90D', 1199, 'images/Canon EOS 90D.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="nikon-z50.html">
+      <img src="images/Nikon Z50.jpg" alt="Nikon Z50" />
+    </a>
+    <h3>Nikon Z50</h3>
+    <p>$859</p>
+    <button onclick="addToCart('Nikon Z50', 859, 'images/Nikon Z50.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <a href="sony-a6400.html">
+      <img src="images/Sony Alpha a6400.jpg" alt="Sony Alpha a6400" />
+    </a>
+    <h3>Sony Alpha a6400</h3>
+    <p>$998</p>
+    <button onclick="addToCart('Sony Alpha a6400', 998, 'images/Sony Alpha a6400.jpg')">Add to Cart</button>
+  </div>
+
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>About PrimeCams</h3>
+      <p>Your trusted source for professional cameras, accessories, and expert advice. We deliver high-quality gear worldwide.</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="return.html">Return Policy</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>Email: primecamsshop@outlook.com</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 PrimeCams. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+<script src="script.js"></script>
+<script>
+ // Product data
+  const products = [
+    { name: 'Canon EOS R5', link: 'Canon EOS R5.html' },
+    { name: 'Sony Alpha a7 IV', link: 'sony-alpha-a7-iv.html' },
+    { name: 'Nikon Z6 II', link: 'nikon-z6-ii.html' },
+    { name: 'Fujifilm X-T5', link: 'fujifilm-xt5.html' },
+    { name: 'Sony ZV-E10', link: 'sony-zv-e10.html' },
+    { name: 'Canon EOS Rebel T8i', link: 'canon-rebel-t8i.html' },
+    { name: 'Nikon D850', link: 'nikon-d850.html' },
+    { name: 'Panasonic Lumix GH6', link: 'panasonic-gh6.html' },
+    { name: 'Sony Alpha 7C', link: 'sony-alpha-7c.html' },
+    { name: 'Canon EOS M50 Mark II', link: 'canon-m50-mark-ii.html' },
+    { name: 'Canon EOS R7', link: 'canon-eos-r7.html' },
+    { name: 'Nikon Z9', link: 'nikon-z9.html' },
+    { name: 'Sony Alpha a1', link: 'sony-alpha-a1.html' },
+    { name: 'Fujifilm X100V', link: 'fujifilm-x100v.html' },
+    { name: 'Panasonic Lumix S5', link: 'panasonic-s5.html' },
+    { name: 'Olympus OM-D E-M1 Mark III', link: 'olympus-om-d-e-m1.html' },
+    { name: 'Leica Q2', link: 'leica-q2.html' },
+    { name: 'Canon EOS 90D', link: 'canon-eos-90d.html' },
+    { name: 'Nikon Z50', link: 'nikon-z50.html' },
+    { name: 'Sony Alpha a6400', link: 'sony-a6400.html' }
+    ];
+
+  function searchProducts() {
+    const input = document.getElementById('search-input').value.toLowerCase();
+    const suggestions = document.getElementById('suggestions');
+
+    // Clear suggestions
+    suggestions.innerHTML = '';
+
+    if (input.length === 0) return;
+
+    // Filter products
+    const matches = products.filter(product => product.name.toLowerCase().includes(input));
+
+    // Show matches
+    matches.forEach(product => {
+      const li = document.createElement('li');
+      li.textContent = product.name;
+      li.onclick = () => { window.location.href = product.link; };
+      suggestions.appendChild(li);
+    });
+  }
+  
+</script>
+<a href="cart.html" class="floating-cart">
+    🛒
+</a>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const gridItems = document.querySelectorAll(".grid-item");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    gridItems.forEach(item => {
+      observer.observe(item);
+    });
+  });
+</script>
+
+
+</body>
+</html>

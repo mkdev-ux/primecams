@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us | PrimeCams</title>
+  <link rel="stylesheet" href="otherstyles.css" />
+  <style>
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      padding: 10px 15px;
+      margin-top: 15px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .error-message {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      padding: 10px 15px;
+      margin-top: 15px;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html"><h1>PrimeCams</h1></a>
+    <nav>
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger">&#9776;</label>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="content">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or need assistance, we’re here to help!</p>
+
+    <h3>Contact Information</h3>
+    <p>Email: primecamsshop@outlook.com</p>
+    <p>Address: 123 Camera Lane, New York, NY, USA</p>
+
+    <h3>Send Us a Message</h3>
+    <form id="contact-form" method="POST" action="https://formsubmit.co/97003473364285b8eeabafaf860989e2">
+      <label for="name">Name:</label><br />
+      <input type="text" id="name" name="name" required><br /><br />
+
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" name="email" required><br /><br />
+
+      <label for="message">Message:</label><br />
+      <textarea id="message" name="message" rows="5" required></textarea><br /><br />
+
+      <button type="submit">Send Message</button>
+
+      <div class="success-message" id="success-msg">✅ Your message has been sent successfully!</div>
+      <div class="error-message" id="error-msg">❌ Something went wrong. Please try again later.</div>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 PrimeCams. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-msg');
+    const errorMsg = document.getElementById('error-msg');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          successMsg.style.display = "block";
+          errorMsg.style.display = "none";
+        } else {
+          successMsg.style.display = "none";
+          errorMsg.style.display = "block";
+        }
+      }).catch(error => {
+        successMsg.style.display = "none";
+        errorMsg.style.display = "block";
+      });
+    });
+  </script>
+</body>
+</html>
